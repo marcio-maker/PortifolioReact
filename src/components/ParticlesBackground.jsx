@@ -1,145 +1,96 @@
-import { useCallback } from "react";
-import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim";
+import { useEffect, useState } from 'react';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
 
-const ParticlesBackground = () => {
-  const particlesInit = useCallback(async (engine) => {
-    console.log("Initializing particles...");
-    try {
+function ParticlesBackground() {
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
       await loadSlim(engine);
-      console.log("Particles initialized successfully");
-    } catch (error) {
-      console.error("Error initializing particles:", error);
-    }
+    }).then(() => {
+      setInit(true);
+    });
   }, []);
 
-  return (
-    <Particles
-      id="tsparticles"
-      init={particlesInit}
-      options={{
-        background: {
-          color: "transparent",
+  if (!init) return null;
+
+  const options = {
+    background: {
+      color: {
+        value: "#0d1a26", // Dark background for contrast (Westworld-inspired)
+      },
+    },
+    fpsLimit: 60,
+    interactivity: {
+      events: {
+        onClick: {
+          enable: true,
+          mode: "push", // Push particles on click (explosion-like effect)
         },
-        fullScreen: {
-          enable: false,
-          zIndex: -1
+        onHover: {
+          enable: true,
+          mode: "repulse", // Particles repulse on hover
         },
-        fpsLimit: 120,
-        interactivity: {
-          events: {
-            onHover: {
-              enable: true,
-              mode: "repulse",
-              parallax: {
-                enable: true,
-                force: 30,
-                smooth: 10
-              }
-            },
-            onClick: {
-              enable: true,
-              mode: "push",
-            },
-            resize: {
-              enable: true
-            }
-          },
-          modes: {
-            repulse: {
-              distance: 100,
-              duration: 0.4,
-              speed: 1
-            },
-            push: {
-              quantity: 4,
-              particles_nb: 2
-            },
-          },
+      },
+      modes: {
+        push: {
+          quantity: 4,
         },
-        particles: {
-          color: {
-          value: "#00f0ff", // Ciano neon (funciona bem em ambos os temas)
-          complement: "#ff00f0", // Rosa neon (destaque vibrante)
-          shadow: "#9d00ff" // Roxo elétrico (sombra profunda)
-  },
-          links: {
-            color: "#0066ff", // Alterado para rosa neon futurista
-            distance: 150,
-            enable: true,
-            opacity: 0.3,
-            width: 1,
-            consent: true,
-            blink: false,
-            warp: false
-          },
-          move: {
-            enable: true,
-            speed: 1,
-            direction: "none",
-            random: true,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
-            attract: {
-              enable: true,
-              rotateX: 600,
-              rotateY: 1200
-            }
-          },
-          number: {
-            value: 180,
-            density: {
-              enable: true,
-              value_area: 800
-            }
-          },
-          opacity: {
-            value: 0.5,
-            random: true,
-            anim: {
-              enable: true,
-              speed: 1,
-              opacity_min: 0.1,
-              sync: false
-            }
-          },
-          shape: {
-            type: "circle",
-            stroke: {
-              width: 0,
-              color: "#000000"
-            },
-            polygon: {
-              nb_sides: 5
-            }
-          },
-          size: {
-            value: { min: 1, max: 3 },
-            random: true,
-            anim: {
-              enable: true,
-              speed: 2,
-              size_min: 0.1,
-              sync: false
-            }
-          },
+        repulse: {
+          distance: 200,
+          duration: 0.4,
         },
-        detectRetina: true,
-        smooth: true
-      }}
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: -1,
-        backgroundColor: "transparent",
-        pointerEvents: "none"
-      }}
-    />
-  );
-};
+      },
+    },
+    particles: {
+      color: {
+        value: "#3da6ff", // Vibrant blue from your earlier preference
+      },
+      links: {
+        color: "#4fc3f7", // Slightly lighter blue for links
+        distance: 150,
+        enable: true,
+        opacity: 0.5,
+        width: 1,
+      },
+      move: {
+        direction: "none",
+        enable: true,
+        outModes: {
+          default: "bounce",
+        },
+        random: false,
+        speed: 3, // Slower speed for smooth, elegant motion
+        straight: false,
+      },
+      number: {
+        density: {
+          enable: true,
+        },
+        value: 100, // Moderate number of particles
+      },
+      opacity: {
+        value: 0.7,
+      },
+      shape: {
+        type: "circle",
+      },
+      size: {
+        value: { min: 1, max: 5 },
+      },
+      shadow: {
+        blur: 5,
+        color: {
+          value: "#3da6ff", // Glow effect
+        },
+        enable: true,
+      },
+    },
+    detectRetina: true,
+  };
+
+  return <Particles id="tsparticles" options={options} />;
+}
 
 export default ParticlesBackground;

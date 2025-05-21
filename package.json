@@ -1,5 +1,5 @@
 {
-  "homepage": "https://marcio-maker.github.io/PortifolioReact",
+  "homepage": "https://marcio-maker.github.io/PortfolioReact/",
   "name": "portfolio",
   "version": "0.0.0",
   "private": true,
@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.0.0",
     "framer-motion": "^12.11.3",
     "gsap": "^3.13.0",
     "react": "^19.1.0",
@@ -20,9 +22,7 @@
     "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.16.0",
     "react-router-dom": "^6.27.0",
-    "react-scroll-parallax": "^3.4.5",
-    "react-tsparticles": "^2.12.2",
-    "tsparticles-slim": "^2.12.0"
+    "react-scroll-parallax": "^3.4.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
