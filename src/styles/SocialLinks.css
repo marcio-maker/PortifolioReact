@@ -1,0 +1,31 @@
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.social-links a {
+  color: var(--dark-color);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.footer .social-links a {
+  color: #B0BEC5;
+}
+
+.footer .social-links a:hover {
+  color: var(--primary-color);
+}
+
+.footer .icon {
+  font-size: 1.2rem;
+}

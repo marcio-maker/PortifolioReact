@@ -1,0 +1,201 @@
+/* Variáveis de tema */
+:root {
+  --text-primary: #6b5757;
+  --text-secondary: #8097b5;
+  --accent-color: #60a5fa;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset e estilos base */
+.footer {
+ background: transparent; /* Show particles */
+  color: var(--text-primary);
+  padding: 8rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Container principal */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  perspective: 1000px;
+}
+
+/* Título principal */
+.footer-heading {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  text-align: center;
+  margin-bottom: 5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* Grade de conteúdo */
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 5rem;
+}
+.footer-heading .letter {
+  display: inline-block; /* Ensures letters animate correctly */
+}
+/* Cards espelhados com efeito 3D */
+.mirror-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(10px);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card-reflection {
+  position: absolute;
+  bottom: -30%;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.3), transparent);
+  transform: scaleY(-1) translateZ(-5px);
+  opacity: 0.2;
+  filter: blur(5px);
+  transition: opacity 0.4s ease;
+  backface-visibility: hidden;
+}
+
+.card-content {
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+  transform: translateZ(20px);
+  backface-visibility: hidden;
+}
+
+/* Tipografia e conteúdo */
+.mirror-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-color);
+}
+
+.mirror-card h4 {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 1rem;
+  color: var(--accent-color);
+}
+
+.mirror-card p {
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.mirror-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.mirror-card li {
+  margin-bottom: 0.8rem;
+}
+
+.mirror-card a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.mirror-card a:hover {
+  color: var(--accent-color);
+}
+
+/* Rodapé inferior */
+.footer-bottom {
+  text-align: center;
+  padding-top: 3rem;
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Links sociais */
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.social-links a {
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+/* Animação do ícone de café */
+.coffee {
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .footer {
+    padding: 6rem 1.5rem 3rem;
+  }
+  
+  .footer-container {
+    perspective: none;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .mirror-card {
+    transform-style: flat;
+    backface-visibility: visible;
+  }
+  
+  .card-content, .card-reflection {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-heading {
+    font-size: 2rem;
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+  }
+}
+
+/* Estado carregado */
+.loaded {
+  visibility: visible !important;
+}
