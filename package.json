@@ -1,4 +1,5 @@
 {
+  "homepage": "https://marcio-maker.github.io/PortifolioReact",
   "name": "portfolio",
   "version": "0.0.0",
   "private": true,
@@ -6,6 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
