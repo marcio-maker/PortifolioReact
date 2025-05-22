@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
-import './styles/Global.css';
+import './styles/Global.css'; // Verifique se este arquivo existe
 
-// Adicione isso para verificar se o CSS está carregando
-console.log('Carregando Global.css'); 
+// Adicione este console.log para debug
+console.log('Aplicação iniciando...');
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/PortfolioReact"> {/* Use o nome correto aqui */}
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <App />
     </BrowserRouter>
   </React.StrictMode>
