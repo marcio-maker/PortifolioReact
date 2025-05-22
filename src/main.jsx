@@ -4,10 +4,13 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import './styles/Global.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+// Cria a raiz do React
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Renderiza a aplicação
+root.render(
   <React.StrictMode>
-    {/* Remova o basename ou corrija conforme necessário */}
-    <BrowserRouter>
+    <BrowserRouter basename="/PortfolioReact">
       <App />
     </BrowserRouter>
   </React.StrictMode>
