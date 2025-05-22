@@ -1,12 +1,16 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Use exatamente o mesmo nome do seu repositório GitHub
 export default defineConfig({
-  base: '/PortfolioReact/', // Ou '/PortifolioReact/' se for o nome correto
+  base: '/PortfolioReact/', // Confirme o nome exato do seu repositório
   plugins: [react()],
+  server: {
+    port: 3000,
+    open: true
+  },
   build: {
     outDir: 'dist',
+    emptyOutDir: true,
     assetsDir: 'assets'
   }
 });
