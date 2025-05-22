@@ -6,7 +6,8 @@ import './styles/Global.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/PortifolioReact">
+    {/* Remova o basename ou corrija conforme necessário */}
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>
