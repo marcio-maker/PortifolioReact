@@ -4,13 +4,12 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import './styles/Global.css';
 
-// Cria a raiz do React
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Adicione isso para verificar se o CSS está carregando
+console.log('Carregando Global.css'); 
 
-// Renderiza a aplicação
-root.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/PortfolioReact">
+    <BrowserRouter basename="/PortfolioReact"> {/* Use o nome correto aqui */}
       <App />
     </BrowserRouter>
   </React.StrictMode>
